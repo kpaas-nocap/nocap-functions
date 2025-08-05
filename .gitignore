@@ -1,3 +1,6 @@
 .env
 testMain.py
 __pycache__
+nocap_lambda
+.venv
+myvenv
