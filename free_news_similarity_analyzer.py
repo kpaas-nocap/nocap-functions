@@ -1,17 +1,11 @@
 import json
 import os
-from dotenv import load_dotenv
 import nltk
 from nltk.tokenize import sent_tokenize
 from sentence_transformers import SentenceTransformer, util
-from openai import OpenAI
 
-nltk.download('punkt')
-
-load_dotenv('.env')
-client = os.getenv('OPENAI_API_KEY')
-
-model = SentenceTransformer('sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2')
+model = SentenceTransformer("/var/task/my_local_model")
+nltk.data.path.append("/usr/local/share/nltk_data")
 
 # 메인 처리 함수
 def free_analyze_and_summarize(dto, threshold=0.5):
@@ -40,7 +34,7 @@ def free_analyze_and_summarize(dto, threshold=0.5):
             }
         })
 
-        comparison_results.sort(key=lambda x: x["newsWithSimilarityDTO"]["similarity"], reverse=True)
+    comparison_results.sort(key=lambda x: x["newsWithSimilarityDTO"]["similarity"], reverse=True)
 
     result = {
         "category": dto.get("category", ""),

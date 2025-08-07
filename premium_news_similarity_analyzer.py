@@ -1,17 +1,14 @@
 import json
 import os
-from dotenv import load_dotenv
 import nltk
 from nltk.tokenize import sent_tokenize
 from sentence_transformers import SentenceTransformer, util
 from openai import OpenAI
 
-nltk.download('punkt')
+client = OpenAI(api_key=os.getenv('OPENAI_API_KEY'))
 
-load_dotenv('.env')
-client = os.getenv('OPENAI_API_KEY')
-
-model = SentenceTransformer('sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2')
+model = SentenceTransformer("/var/task/my_local_model")
+nltk.data.path.append("/usr/local/share/nltk_data")
 
 # 유사도 점수 + GPT 요약
 def generate_comparative_summary(main_content, compare_content):
@@ -73,7 +70,7 @@ def premium_analyze_and_summarize(dto, threshold=0.5):
             "comparision": comparison_text
         })
 
-        comparison_results.sort(key=lambda x: x["newsWithSimilarityDTO"]["similarity"], reverse=True)
+    comparison_results.sort(key=lambda x: x["newsWithSimilarityDTO"]["similarity"], reverse=True)
 
     result = {
         "category": dto.get("category", ""),
