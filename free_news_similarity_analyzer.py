@@ -2,7 +2,7 @@ import json
 from nltk.tokenize import sent_tokenize
 from sentence_transformers import SentenceTransformer, util
 
-model = SentenceTransformer('sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2')
+model = SentenceTransformer("./model")
 
 _ = model.encode(["프리로딩 테스트"], convert_to_tensor=True)
 

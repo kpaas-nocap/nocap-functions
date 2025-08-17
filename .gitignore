@@ -6,3 +6,5 @@ nocap_lambda
 myvenv
 venv
 test.json
+result.json
+model/

@@ -5,10 +5,11 @@ from premium_news_similarity_analyzer import premium_analyze_and_summarize
 
 def lambda_handler(event, context):
     try:
-        body = json.loads(event['body'])
+        body_str = json.dumps(event)
+        body = json.loads(body_str)
 
-        mode = body.get("plan", "free")  # 기본: free
-        if mode == "premium":
+        plan = body.get("plan", "free")  # 기본: free
+        if plan == "premium":
             result = premium_analyze_and_summarize(body)
         else:
             result = free_analyze_and_summarize(body)

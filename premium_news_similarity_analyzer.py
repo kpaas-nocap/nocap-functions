@@ -1,13 +1,12 @@
 import json
 import os
-import nltk
 from nltk.tokenize import sent_tokenize
 from sentence_transformers import SentenceTransformer, util
 from openai import OpenAI
 
-client = os.getenv('OPENAI_API_KEY')
+client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
 
-model = SentenceTransformer('sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2')
+model = SentenceTransformer("./model")
 
 _ = model.encode(["프리로딩 테스트"], convert_to_tensor=True)
 
