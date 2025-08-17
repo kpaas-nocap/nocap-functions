@@ -1,10 +1,4 @@
 import json
-import nltk
-import sys
-import os
-
-sys.path.append(os.path.join(os.environ.get('LAMBDA_TASK_ROOT', ''), 'my_local_model'))
-nltk.data.path.append("/usr/local/share/nltk_data")
 
 from free_news_similarity_analyzer import free_analyze_and_summarize
 from premium_news_similarity_analyzer import premium_analyze_and_summarize

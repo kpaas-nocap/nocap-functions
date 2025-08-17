@@ -1,18 +1,15 @@
 import json
 import os
 import nltk
-from dotenv import load_dotenv
 from nltk.tokenize import sent_tokenize
 from sentence_transformers import SentenceTransformer, util
 from openai import OpenAI
 
-nltk.download('punkt')
-
-load_dotenv('.env')
 client = os.getenv('OPENAI_API_KEY')
 
 model = SentenceTransformer('sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2')
 
+_ = model.encode(["프리로딩 테스트"], convert_to_tensor=True)
 
 # 유사도 점수 + GPT 요약
 def generate_comparative_summary(main_content, compare_content):

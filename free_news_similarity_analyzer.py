@@ -1,16 +1,10 @@
 import json
-import os
-from dotenv import load_dotenv
-import nltk
 from nltk.tokenize import sent_tokenize
 from sentence_transformers import SentenceTransformer, util
 
-nltk.download('punkt')
-
-load_dotenv('.env')
-client = os.getenv('OPENAI_API_KEY')
-
 model = SentenceTransformer('sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2')
+
+_ = model.encode(["프리로딩 테스트"], convert_to_tensor=True)
 
 # 메인 처리 함수
 def free_analyze_and_summarize(dto, threshold=0.5):
