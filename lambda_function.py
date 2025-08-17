@@ -13,8 +13,8 @@ def lambda_handler(event, context):
     try:
         body = json.loads(event['body'])
 
-        plan = body.get("plan", "free")  # 기본: free
-        if plan == "premium":
+        mode = body.get("plan", "free")  # 기본: free
+        if mode == "premium":
             result = premium_analyze_and_summarize(body)
         else:
             result = free_analyze_and_summarize(body)

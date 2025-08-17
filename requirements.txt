@@ -1,6 +1,5 @@
---extra-index-url https://download.pytorch.org/whl/cpu
-torch==2.7.1+cpu
-sentence-transformers
 openai
-python-dotenv
 nltk
+sentence-transformers
+torch
+python-dotenv
