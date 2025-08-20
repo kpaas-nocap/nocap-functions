@@ -1,10 +1,9 @@
 .env
-testMain.py
+test.py
 __pycache__
 nocap_lambda
 .venv
 myvenv
 venv
-test.json
-result.json
+*.json
 model/
